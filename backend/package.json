@@ -1,0 +1,20 @@
+{
+  "name": "books-shop-server-side",
+  "version": "1.0.0",
+  "description": "This is  backend for server side of project Books Shop",
+  "type":"module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samolazoff/Books-Shop.git"
+  },
+  "author": "Samolazoff",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samolazoff/Books-Shop/issues"
+  },
+  "homepage": "https://github.com/samolazoff/Books-Shop#readme"
+}
