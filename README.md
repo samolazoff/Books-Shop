@@ -12,7 +12,9 @@
 1. Vite  
 2. React JS  
         2.1  React Router  
+        2.2  React Icon
 3. Tailwind CSS  
+4. Axios
 
 ### An intresting tools
 
