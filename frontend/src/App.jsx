@@ -1,6 +1,8 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom';
 
+import './App.css';
+
 import Home from './pages/Home';
 import CreateBoook from './pages/CreateBook';
 import DeleteBoook from './pages/DeleteBook';
