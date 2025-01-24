@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {useNavigate, useParams} from 'react-router-dom';
+import {useSnackbar} from 'notistack';
 
 import BackButton from '../components/BackButton/BackButton';
 import Spiner from '../components/Spiner/Spiner';
@@ -8,11 +9,11 @@ import Spiner from '../components/Spiner/Spiner';
 const EditBook = () => {
 
     const {id} = useParams();
-
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
     const [publishYear, setPublishYear] = useState('');
     const [loading, setLoading] = useState(false);
+    const { enqueueSnackbar } = useSnackbar();
 
     useEffect(
         () => {
@@ -21,8 +22,8 @@ const EditBook = () => {
                 .get(`http://localhost:5555/books/${id}`)
                 .then((res) => {
                     setAuthor(res.data.author);
-                    setPublishYear(res.data.publishYear)
-                    setTitle(res.data.title)
+                    setPublishYear(res.data.publishYear);
+                    setTitle(res.data.title);
                     setLoading(false);
                 })
                 .catch((error) => {
@@ -48,9 +49,11 @@ const EditBook = () => {
             .put(`http://localhost:5555/books/${id}`, newBook)
             .then(() => {
                 setLoading(false);
+                enqueueSnackbar('Book edited successfully', { variant: 'success' });
                 navigate('/');
             })
             .catch((error) => {
+                enqueueSnackbar('Error', { variant: 'error' });
                 console.log(error);
                 setLoading(false);
             })

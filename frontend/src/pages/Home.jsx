@@ -30,7 +30,6 @@ const Home = () => {
     );
     return (
         
-        
         <div className='p-4 flex flex-col justify-center items-center'>
             <div className="flex justify-between items-center box-title">
                 <h1 className="text-3xl my-8">Books list</h1>
