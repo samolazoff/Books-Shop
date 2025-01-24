@@ -15,6 +15,7 @@
         2.2  React Icon
 3. Tailwind CSS  
 4. Axios
+5. Notistack
 
 ### An intresting tools
 
