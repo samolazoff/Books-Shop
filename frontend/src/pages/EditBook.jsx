@@ -9,11 +9,13 @@ import Spiner from '../components/Spiner/Spiner';
 const EditBook = () => {
 
     const {id} = useParams();
+    const { enqueueSnackbar } = useSnackbar();
+    const navigate = useNavigate();
+
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
     const [publishYear, setPublishYear] = useState('');
     const [loading, setLoading] = useState(false);
-    const { enqueueSnackbar } = useSnackbar();
 
     useEffect(
         () => {
@@ -32,9 +34,6 @@ const EditBook = () => {
                 })
         }, []
     );
-    
-
-    const navigate = useNavigate();
 
     const handleSaveBook = () => {
 

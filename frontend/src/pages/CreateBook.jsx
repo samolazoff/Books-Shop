@@ -11,8 +11,8 @@ const CreateBook = () => {
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
     const [publishYear, setPublishYear] = useState('');
-
     const [loading, setLoading] = useState(false);
+
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
 
@@ -25,6 +25,7 @@ const CreateBook = () => {
         };
 
         setLoading(true);
+        
         axios
             .post(`http://localhost:5555/books/`, book)
             .then((res) => {

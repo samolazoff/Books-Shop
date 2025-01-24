@@ -8,6 +8,7 @@ import Spiner from '../components/Spiner/Spiner';
 const ShowBook = () => {
     const [book, setBook] = useState({});
     const [loading, setLoading] = useState(false);
+    
     const {id} = useParams();
 
     useEffect(
