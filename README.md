@@ -16,6 +16,7 @@
 3. Tailwind CSS  
 4. Axios
 5. Notistack
+6. Redux  
 
 ### An intresting tools
 
