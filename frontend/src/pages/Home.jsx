@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
-import {Link} from 'react-router-dom';
+    import {Link} from 'react-router-dom';
+import {useSelector, useDispatch} from 'react-redux';
+
+import { fetchData } from "../feuters/books/booksSlice";
 
 import { AiOutlineEdit } from "react-icons/ai";
 import { BsInfoCircle} from "react-icons/bs";
@@ -10,25 +12,13 @@ import Spiner from '../components/Spiner/Spiner';
 
 const Home = () => {
 
-    const [books, setBooks] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const books = useSelector((state) => state.books);
+    const dispatch = useDispatch();
 
-    useEffect(
-        () => {
-            setLoading(true);
-            axios
-                .get('http://localhost:5555/books')
-                .then((res) => {
-                    setBooks(res.data.data);
-                    setLoading(false);
-                })
-                .catch((error) => {
-                    console.log(error);
-                    setLoading(false);
-                })
-        }, []
-    );
-    
+    useEffect(() => {
+        dispatch(fetchData());
+    }, [dispatch]);
+
     return (
         
         <div className='p-4 flex flex-col justify-center items-center'>
@@ -38,7 +28,8 @@ const Home = () => {
                     <MdOutlineAddBox className='text-sky-800 text-4xl'></MdOutlineAddBox>
                 </Link>
             </div>
-            {loading ? (<Spiner></Spiner>) : (
+            {books.loading && <Spiner></Spiner>}
+            {books.data && (
                 <table className="w-full border-separate border-spacing-2">
                     <thead>
                         <tr>
@@ -48,11 +39,10 @@ const Home = () => {
                             <th className="border border-slate-600 rounded-md max-md:hidden">Publish year</th>
                             <th className="border border-slate-600 rounded-md">Operations</th>
                        </tr>
-
                     </thead>
                     <tbody>
                         {
-                            books.map((book, index) => {
+                            books.data.map((book, index) => {
                                 return(
                                     <tr key={book._id} className='h-8'>
                                         <td className="border border-slate-700 rounded-md text-center">
@@ -88,6 +78,7 @@ const Home = () => {
                     </tbody>
                 </table>
             )}
+            {books.error && <p>{books.error}</p>}
         </div>
     )
 };
